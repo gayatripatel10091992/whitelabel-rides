@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Merged only into kiosk builds: lets a device-owner provisioned tablet pin the app with Lock Task Mode. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <activity
+            android:name=".MainActivity"
+            android:lockTaskMode="if_whitelisted"
+            android:screenOrientation="portrait"
+            tools:node="merge"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
+    </application>
+
+</manifest>

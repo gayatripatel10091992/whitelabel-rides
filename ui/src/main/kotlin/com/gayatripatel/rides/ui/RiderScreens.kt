@@ -327,7 +327,7 @@ fun ReceiptScreen(state: ReceiptUiState, onRate: (Int) -> Unit, onDone: () -> Un
                             color = if (line.amountMinor < 0) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onSurface,
                         )
                         Text(
-                            (if (line.amountMinor < 0) "−" else "") + currency.format(kotlin.math.abs(line.amountMinor)),
+                            "\u200E" + (if (line.amountMinor < 0) "−" else "") + currency.format(kotlin.math.abs(line.amountMinor)),
                             color = if (line.amountMinor < 0) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onSurface,
                         )
                     }
@@ -356,6 +356,7 @@ fun ReceiptScreen(state: ReceiptUiState, onRate: (Int) -> Unit, onDone: () -> Un
         }
         Spacer(Modifier.weight(1f))
         Button(onClick = onDone, modifier = Modifier.fillMaxWidth().height(54.dp)) { Text(stringResource(R.string.done)) }
-        TextButton(onClick = {}, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text(state.brand.supportPhone) }
+        // LTR marks keep phone numbers and signed amounts readable inside right-to-left text.
+        TextButton(onClick = {}, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text("\u200E${state.brand.supportPhone}\u200E") }
     }
 }
